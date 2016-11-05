@@ -237,6 +237,18 @@ func (fi *FormInstance) MapTo(model interface{}) {
 				    	value = time.Time{}
 				    }
 				    valueField.Set(reflect.ValueOf(spaazaSDK.CustomTime{value}))
+				case "spaazaSDK.MailingList": // FIXME: This is bad bad!
+					value, ok := v.(bool)
+					if !ok {
+						value = false
+					}
+					valueField.Set(reflect.ValueOf(spaazaSDK.MailingList{value}))
+				case "spaazaSDK.OptInProgramme": // FIXME: This is bad bad bad!
+					value, ok := v.(bool)
+					if !ok {
+						value = false
+					}
+					valueField.Set(reflect.ValueOf(spaazaSDK.OptInProgramme{value}))
 				}
 			}
 		}
